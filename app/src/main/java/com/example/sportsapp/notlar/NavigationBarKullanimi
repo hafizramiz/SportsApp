@@ -1,0 +1,139 @@
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SportsAppPortrait(modifier: Modifier = Modifier) {
+    // State bilgisini burda tuttum. Bunu alttaki composable'lara vercem.
+    var selectedDestination by remember {
+        mutableStateOf(SportsRoute.ONEPLAYER)
+    }
+    Scaffold(
+        bottomBar = {
+            // Buraya navigation bar gelecek
+            SportsBottomNavigation(
+                selectedDestination = selectedDestination,
+                onClick = {
+                    if (it == 1)
+                        selectedDestination = SportsRoute.ONEPLAYER
+                    else
+                        selectedDestination = SportsRoute.MULTIPLAYER
+                },
+            )
+        }) { innerPadding ->
+        if (selectedDestination == SportsRoute.ONEPLAYER) {
+            Text(
+                modifier = Modifier.padding(innerPadding),
+                text = "ONe player page"
+            )
+        } else {
+            Text(
+                modifier = Modifier.padding(innerPadding),
+                text = "Multiplayer page"
+            )
+        }
+        //HomeScreen(modifier = Modifier.padding(innerPadding))
+    }
+}
+-----------------------------------------------------------------------------------
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SportsAppPortrait(modifier: Modifier = Modifier) {
+    // State bilgisini burda tuttum. Bunu alttaki composable'lara vercem.
+    var selectedDestination by remember {
+        mutableStateOf(SportsRoute.ONEPLAYER)
+    }
+    Scaffold(
+        bottomBar = {
+            // Buraya navigation bar gelecek
+            SportsBottomNavigation(
+                selectedDestination = selectedDestination,
+                onClick = {
+                    // Burda onclick fonksiyonunun verdigi int degerine gore istedigim sayfaya atabiliyorum.
+                    if (it == 1)
+                        selectedDestination = SportsRoute.ONEPLAYER
+                    else
+                        selectedDestination = SportsRoute.MULTIPLAYER
+                },
+            )
+        }) { innerPadding ->
+        if (selectedDestination == SportsRoute.ONEPLAYER) {
+            Text(
+                modifier = Modifier.padding(innerPadding),
+                text = "ONe player page"
+            )
+        } else {
+            Text(
+                modifier = Modifier.padding(innerPadding),
+                text = "Multiplayer page"
+            )
+        }
+        //HomeScreen(modifier = Modifier.padding(innerPadding))
+    }
+}
+
+
+// Stateless Widget
+@Composable
+fun SportsBottomNavigation(
+    modifier: Modifier = Modifier,
+    selectedDestination: String,
+    onClick: (Int) -> Unit,
+
+    ) {
+
+    NavigationBar {
+        // Simdi olusturdugum listenin icinde gezerek navbar itemlari olusturcam.
+        TOPLEVELDESTINATIONS.forEach { destinationItem ->
+            NavigationBarItem(
+                // Burda bir az dusunmemiz gerekecek.
+                selected = false,
+                // Burda callback fonksiyona listedeki indexleri verdim. Yani on click metotunu yukarda cagirdgim zaman
+                // Bana bir 0,1, gibi degerler verecek. Bende ona gore istedigim sayfaya yonlendirecegim.
+
+                onClick = {onClick(TOPLEVELDESTINATIONS.indexOf(destinationItem))},
+                icon = { Icon(
+                    destinationItem.selectedIcon,
+                    contentDescription = null
+                )},
+                label = { Text(text = stringResource(id = destinationItem.iconTextId)) }
+            )
+
+        }
+
+    }
+}
+
+
+
+
+
+
+
+// Stateless Widget
+@Composable
+fun SportsBottomNavigation(
+    modifier: Modifier = Modifier,
+    selectedDestination: String,
+    onClick: (Int) -> Unit,
+
+    ) {
+    NavigationBar {
+        NavigationBarItem(
+            selected = false,
+            onClick = { onClick(1) },
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null
+                )
+            }
+        )
+        NavigationBarItem(
+            selected = false,
+            onClick = { onClick(2) },
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null
+                )
+            }
+        )
+    }
