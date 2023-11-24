@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">SportsApp</string>
     <string name="tab_oneplayer">OnePlayer</string>
-    <string name="tab_multiplayer">MultiPlayer</string>
+    <string name="tab_homepage">HomePage</string>
 </resources>

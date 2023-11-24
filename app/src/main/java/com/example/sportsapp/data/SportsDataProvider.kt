@@ -83,7 +83,7 @@ object OrganizatorListDatabase {
         ),
         Organizator(
             id = 7L,
-            organizatorName = "Oliver",
+            organizatorName = "Daniel",
             organizatorSurname = "Aaron",
             organizatorMail = "Aaron@gmail.com",
             organizatorPicture = R.drawable.avatar7

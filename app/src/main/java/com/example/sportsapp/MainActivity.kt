@@ -3,32 +3,44 @@ package com.example.sportsapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.sportsapp.ui.theme.HomeScreen
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.sportsapp.ui.theme.AppTheme
 import com.example.sportsapp.ui.theme.SportsAppPortrait
-import com.example.sportsapp.ui.theme.SportsAppTheme
-import com.example.sportsapp.ui.theme.SportsLazyColumn
-import com.example.sportsapp.ui.theme.components.SportsDetailTopBar
-import com.example.sportsapp.ui.theme.components.SportsListItem
-import com.example.sportsapp.ui.theme.components.SportsTopBar
+
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.sportsapp.ui.theme.AppViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SportsAppTheme {
-              // SportsDetailTopBar()
-               // SportsListItem()
-              SportsAppPortrait()
-            }
+            // Burda view model'deki state bilgine eriscem
+            // val uiState by viewModel.uiState.collectAsState()
+              AppTheme {
+                  SportsAppPortrait()
+              }
         }
     }
 }
 
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES,
+    name = "DefaultPreviewDark"
+)
+@Preview(
+    uiMode = UI_MODE_NIGHT_NO,
+    name = "DefaultPreviewLight"
+)
+@Composable
+fun ReplyAppPreviewLight() {
+    SportsAppPortrait(
+    )
+}
 
