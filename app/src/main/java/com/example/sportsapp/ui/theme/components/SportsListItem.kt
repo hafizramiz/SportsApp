@@ -54,7 +54,8 @@ fun SportsListItem(modifier: Modifier = Modifier,
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp)
+                    .height(120.dp),
+
             ) {
                 Card(
                     modifier = modifier
@@ -80,7 +81,8 @@ fun SportsListItem(modifier: Modifier = Modifier,
                         ) {
                             //
                             Text(
-                                text = tiklanincaSecilenSportListesi[listItem].sport.name, style = MaterialTheme.typography.titleMedium,
+                                text = tiklanincaSecilenSportListesi[listItem].sport.name,
+                                style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.Bold
                             )
                             // sender
